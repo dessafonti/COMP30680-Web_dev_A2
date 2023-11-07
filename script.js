@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((data) => {
       // processing the JSON data
+      // Set constant "senators" to data.objects to abstract unnecessary meta data in senators.json file
       const senators = data.objects;
 
-      // defining "party counter", "leadership roles" and "general data objects" arrays, its properties and initial values
-      let partyCounts = {
+      //Define objects "partyAffiliationData", "leadershipRolesData", "senatorGeneralData" with appropriate properties & initialise their values to either 0, null or empty
+      //These objects will be appended and updated with relevant data once senators.json is processed by the successive forEach() method(s)
+      let partyAffiliationData = {
         Republican: 0,
         Democrat: 0,
         Independent: 0,
@@ -24,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         Independent: [],
       };
 
-      // looping through the array "senator"
+      // Use the forEach() iterative method to loop through senators.json and process the data, appending the above objects when appropriate
       senators.forEach((senator) => {
         const party = senator.party;
         const leadershipStatus = senator.leadership_title;
 
         // check the party affiliation and increment the count accordingly
-        if (partyCounts.hasOwnProperty(party)) {
-          partyCounts[party]++;
+        if (partyAffiliationData.hasOwnProperty(party)) {
+          partyAffiliationData[party]++;
         }
 
         //check if leadershipStatus is false or true (if true, it creates the string "senatorLeadershipData" with the respective informartion)
@@ -92,9 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       // updating the innerHTML of senators.html with the senators party counts
-      democratsCounterElement.innerHTML = `Democrats: ${partyCounts.Democrat}`;
-      republicansCounterElement.innerHTML = `Republicans: ${partyCounts.Republican}`;
-      independentsCounterElement.innerHTML = `Independents: ${partyCounts.Independent}`;
+      democratsCounterElement.innerHTML = `Democrats: ${partyAffiliationData.Democrat}`;
+      republicansCounterElement.innerHTML = `Republicans: ${partyAffiliationData.Republican}`;
+      independentsCounterElement.innerHTML = `Independents: ${partyAffiliationData.Independent}`;
 
       // updating the innerHTML of senators.html with the senators leadership info
       leadershipRolesData.Democrat.forEach((senator) => {
