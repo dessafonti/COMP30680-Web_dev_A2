@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("./senators.json")
     .then((response) => response.json())
     .then((data) => {
-      // processing the JSON data
-      // Set constant "senators" to data.objects to abstract unnecessary meta data in senators.json file
+      //Processing the JSON data
+      //Set constant "senators" to data.objects to abstract unnecessary meta data in senators.json file
       const senators = data.objects;
 
       //Define objects "partyAffiliationData", "leadershipRolesData", "senatorGeneralData" with appropriate properties & initialise their values to either 0, null or empty
@@ -26,24 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Independent: [],
       };
 
-      // Use the forEach() iterative method to loop through senators.json and process the data, appending the above objects when appropriate
-      senators.forEach((senator) => {
-        const party = senator.party;
-        const leadershipStatus = senator.leadership_title;
-
-        // check the party affiliation and increment the count accordingly
-        if (partyAffiliationData.hasOwnProperty(party)) {
-          partyAffiliationData[party]++;
-        }
-
-        //check if leadershipStatus is false or true (if true, it creates the string "senatorLeadershipData" with the respective informartion)
-        if (leadershipStatus) {
-          const senatorLeadershipData = `${leadershipStatus}: ${senator.person.firstname} ${senator.person.lastname} (${senator.party})`;
-          leadershipRolesData[party].push(senatorLeadershipData);
-        }
-      });
-
-      // looping through the array "senator", creates a new object named "senatorData" (with its properties) and then adds it to an array (called "senatorGeneralData") associated with the party
+      //Use the forEach() iterative method to loop through senators.json and process the data, appending the above objects when appropriate
       senators.forEach((senator) => {
         const firstname = senator.person.firstname;
         const lastname = senator.person.lastname;
@@ -51,10 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const gender = senator.person.gender_label;
         const rank = senator.senator_rank_label;
         const state = senator.state;
-        const startDate = senator.startdate; // included by Andressa (comment to be deleted later)
-        const twitter = senator.twitterid; // included by Andressa (comment to be deleted later)
-        const youtubeid = senator.youtubeid; // included by Andressa (comment to be deleted later)
+        const startDate = senator.startdate;
+        const twitter = senator.twitterid;
+        const youtubeid = senator.youtubeid;
+        const leadershipStatus = senator.leadership_title;
 
+        //Define objects "senatorData", "senatorLeadershipData" with appropriate properties & set their properties with the corresponding variables above
         let senatorData = new Object();
         senatorData.firstname = firstname;
         senatorData.lastname = lastname;
@@ -62,16 +47,34 @@ document.addEventListener("DOMContentLoaded", () => {
         senatorData.gender = gender;
         senatorData.rank = rank;
         senatorData.state = state;
-        senatorData.startDate = startDate; // included by Andressa (comment to be deleted later)
-        senatorData.twitter = twitter; // included by Andressa (comment to be deleted later)
-        senatorData.youtubeid = youtubeid; // included by Andressa (comment to be deleted later)
+        senatorData.startDate = startDate;
+        senatorData.twitter = twitter;
+        senatorData.youtubeid = youtubeid;
 
+        let senatorLeadershipData = new Object();
+        senatorLeadershipData.leadershipStatus = leadershipStatus;
+        senatorLeadershipData.firstname = firstname;
+        senatorLeadershipData.lastname = lastname;
+        senatorLeadershipData.party = party;
+
+        //Use if conditional statement to assess the party affiliation of senator data point and increment the corresponding property in partyAffiliationData accordingly
+        if (partyAffiliationData.hasOwnProperty(party)) {
+          partyAffiliationData[party]++;
+        }
+
+        //Use if conditional statement to assess if leadershipStatus is false or true (if true, control flow allows for creation of the string "senatorLeadershipData" with the respective informartion)
+        if (leadershipStatus) {
+          //const senatorLeadershipData = `${leadershipStatus}: ${senatorData.firstname} ${senatorData.lastname} (${senatorData.party})`;
+          leadershipRolesData[party].push(senatorLeadershipData);
+        }
+
+        // Use if conditional statement to assess the party affiliation of senator data point
         if (senatorGeneralData.hasOwnProperty(party)) {
           senatorGeneralData[party].push(senatorData);
         }
       });
 
-      //getting the DOM elements where we want to display the affiliations counter
+      //Acquire the DOM elements where we want to display the partyAffiliationsData and assign each DOM element to a variable
       const democratsCounterElement = document.getElementById(
         "party-affiliations-democrats"
       );
@@ -82,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "party-affiliations-independents"
       );
 
-      //getting the DOM elements where we want to display the leadership data
+      //Acquire the DOM elements where we want to display the leadershipRolesData and assign each DOM element to a variable
       const democratsLeadersElement = document.getElementById(
         "senators-leadership-roles-democrats"
       );
@@ -93,35 +96,38 @@ document.addEventListener("DOMContentLoaded", () => {
         "senators-leadership-roles-independents"
       );
 
-      // updating the innerHTML of senators.html with the senators party counts
+      //Update the innerHTML of senators.html with the senators party counts from partyAffiliationsData
       democratsCounterElement.innerHTML = `Democrats: ${partyAffiliationData.Democrat}`;
       republicansCounterElement.innerHTML = `Republicans: ${partyAffiliationData.Republican}`;
       independentsCounterElement.innerHTML = `Independents: ${partyAffiliationData.Independent}`;
 
-      // updating the innerHTML of senators.html with the senators leadership info
+      //Update the innerHTML of senators.html with the senators leadership info from leadershipRolesData
       leadershipRolesData.Democrat.forEach((senator) => {
         democratsLeadersElement.insertAdjacentHTML(
           "beforeend",
-          `<li>${senator}</li>`
+          `<li>${senator.leadershipStatus} ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
         );
       });
 
-      // populating the webpage with a list of senators and their leadership roles
+      //Add spacing between democratsLeadershipElement and republicansLeadershipElement to improve UI
       democratsLeadersElement.appendChild(document.createElement("br"));
 
+      //Update the innerHTML of senators.html with the senators leadership info from leadershipRolesData
       leadershipRolesData.Republican.forEach((senator) => {
         republicansLeadersElement.insertAdjacentHTML(
           "beforeend",
-          `<li>${senator}</li>`
+          `<li>${senator.leadershipStatus} ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
         );
       });
 
+      //Add spacing between democratsLeadershipElement and republicansLeadershipElement to improve UI
       republicansLeadersElement.appendChild(document.createElement("br"));
 
+      //Update the innerHTML of senators.html with the senators leadership info from leadershipRolesData
       leadershipRolesData.Independent.forEach((senator) => {
         independentsLeadersElement.insertAdjacentHTML(
           "beforeend",
-          `<li>${senator}</li>`
+          `<li>${senator.leadershipStatus} ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
         );
       });
 
