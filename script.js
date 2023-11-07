@@ -131,8 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       });
 
-      //Andressa's code starts here(comment to be deleted later):
-
       //Acquire the DOM elements for filtering and assign each DOM element to a variable
       const partyFilter = document.getElementById("party-affiliation-filter");
       const stateFilter = document.getElementById("state-filter");
@@ -143,40 +141,34 @@ document.addEventListener("DOMContentLoaded", () => {
       const senatorDetailsContainer =
         document.getElementById("senator-details");
 
-      //Define function showSenatorDetails and configure it so that upon the webpage loading (when no senator has been selected) the corresponding DOM element is empty
-      // function to display detailed information about a selected senator
+      //Define function showSenatorDetails
+      //Configure showSenatorDetails so that upon the webpage loading(when no senator has been selected) the corresponding DOM element is empty
       function showSenatorDetails(senator) {
         senatorDetailsContainer.innerHTML = "";
 
-        // creating a new container for senator details
-        const senatorDetailElement = document.createElement("div");
-        senatorDetailElement.className = "senator-details";
-
-        // creating a clickable website link
+        //Create anchorlink element to include in senatorDetailsContainer
         const websiteLink = document.createElement("a");
         websiteLink.href = senator.website;
         websiteLink.target = "_blank";
         websiteLink.textContent = "Visit Website";
         websiteLink.id = "website-link";
 
-        // building the details HTML
-        senatorDetailElement.innerHTML = `
+        //Interpolate HTML containing information pertaining to the selected senator in to senators.html
+        senatorDetailsContainer.innerHTML = `
         <h2>${senator.person.firstname} ${senator.person.lastname}</h2>
-        <p>Office: ${senator.description}</p>
-        <p>Date of Birth: ${senator.person.birthday}</p>
-        <p>Start Date: ${senator.startdate}</p>
-        <p>YouTube: ${senator.person.youtubeid || "N/A"}</p>
-        <p>Twitter: ${senator.person.twitterid || "N/A"}</p>
+        <ul>
+        <li>Office: ${senator.description}</li>
+        <li>Date of Birth: ${senator.person.birthday}</li>
+        <li>Start Date: ${senator.startdate}</li>
+        <li>YouTube: ${senator.person.youtubeid || "N/A"}</li>
+        <li>Twitter: ${senator.person.twitterid || "N/A"}</li>
+        </ul>
         `;
 
-        senatorDetailElement.appendChild(websiteLink);
-
-        // adding the senator details to the container
-        senatorDetailsContainer.appendChild(senatorDetailElement);
+        senatorDetailsContainer.appendChild(websiteLink);
       }
 
       //Define function filterSenators to filter and display senators based on party, state, and rank
-      // function to filter and display senators based on party, state, and rank
       function filterSenators() {
         const selectedParty = partyFilter.value;
         const selectedState = stateFilter.value;

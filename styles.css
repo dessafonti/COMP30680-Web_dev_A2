@@ -119,7 +119,9 @@ select,
   cursor: pointer;
 }
 
-#senator-details p,
+#senator-details li {
+  margin-left: 10px;
+}
 #website-link {
   margin-left: 50px;
 }
