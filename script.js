@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         websiteLink.href = senator.website;
         websiteLink.target = "_blank";
         websiteLink.textContent = "Visit Website";
+        websiteLink.id = "website-link";
 
         // building the details HTML
         senatorDetailElement.innerHTML = `

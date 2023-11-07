@@ -27,6 +27,8 @@ h1 {
 img {
   width: 115px;
   float: right;
+  position: relative;
+  top: -15px;
 }
 
 h2 {
@@ -69,6 +71,15 @@ select {
   border-radius: 5px;
   background-color: whitesmoke;
   cursor: pointer;
+}
+
+div#senator-details {
+  margin-left: 0;
+}
+
+#senator-details p,
+#website-link {
+  margin-left: 50px;
 }
 
 #party-select,
@@ -142,7 +153,9 @@ button {
   font-weight: 500;
   font-size: small;
   cursor: pointer;
-  margin-left: 500px;
+  display: block;
+  margin: 0 auto;
+  /*margin-left: 500px;*/
   margin-top: 50px;
   padding: 0px;
   overflow: hidden;
