@@ -84,17 +84,9 @@ li {
   color: var(--tertiary-colour);
 }
 
-h3 {
-  margin: 0 auto;
-}
-
 label {
   margin-right: 10px;
   color: var(--primary-colour);
-}
-
-select {
-  cursor: pointer;
 }
 
 div#senator-details {
@@ -114,11 +106,17 @@ button {
   height: 40px;
   font-size: 14px;
   letter-spacing: 2px;
-  cursor: pointer;
   display: block;
   margin: 0 auto;
   margin-top: 50px;
   overflow: hidden;
+}
+
+button,
+select,
+#senator-details,
+#filtered-senators {
+  cursor: pointer;
 }
 
 #senator-details p,
@@ -137,7 +135,6 @@ button {
   list-style: none;
   text-align: justify;
   margin-left: 50px;
-  cursor: pointer;
 }
 
 .filter-container,

@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         senatorDetailsContainer.appendChild(senatorDetailElement);
       }
 
+      //Define function filterSenators to filter and display senators based on party, state, and rank
       // function to filter and display senators based on party, state, and rank
       function filterSenators() {
         const selectedParty = partyFilter.value;
@@ -220,9 +221,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//Function that corresponds with back-to-top-btn: On click,
+//Function that corresponds with back-to-top-btn: On click, scroll back to top of webpage
 // code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
 function backToTop() {
   window.scrollTo(0, 0);
 }
-//Andressa's code ends here(comment to be deleted later)
