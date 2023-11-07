@@ -1,7 +1,48 @@
+:root {
+  --primary-colour: #1c4178;
+  --secondary-colour: #f5f5f5;
+  --tertiary-colour: #333;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+footer {
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h1,
+footer {
+  color: var(--secondary-colour);
+  background-color: var(--primary-colour);
+}
+
+h2,
+h3 {
+  color: var(--primary-colour);
+  font-size: 24px;
+}
+
+h2,
+button,
+#party-affiliation-filter,
+#state-filter,
+#rank-filter,
+.filter-container {
+  background-color: var(--secondary-colour);
+  border: 1px solid var(--primary-colour);
+  border-radius: 5px;
 }
 
 main {
@@ -10,18 +51,15 @@ main {
 }
 
 header {
-  background-color: #1c4178;
-  color: #fff;
+  background-color: var(--primary-colour);
   text-align: center;
   padding: 30px;
 }
 
 h1 {
   font-size: 40px;
-  font-weight: bold;
   margin-bottom: 10px;
   margin-left: 115px;
-  color: whitesmoke;
 }
 
 img {
@@ -32,15 +70,8 @@ img {
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: bold;
   margin-bottom: 15px;
   padding: 20px;
-  color: #1c4178;
-  border-radius: 5px;
-  background-color: whitesmoke;
-  border: 1px solid #1c4178;
-  text-align: center;
 }
 
 ul {
@@ -50,26 +81,19 @@ ul {
 
 li {
   margin-bottom: 10px;
-  color: #333;
+  color: var(--tertiary-colour);
 }
 
 h3 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1c4178;
   margin: 0 auto;
 }
 
 label {
   margin-right: 10px;
-  color: #1c4178;
+  color: var(--primary-colour);
 }
 
 select {
-  padding: 10px;
-  border: 1px solid whitesmoke;
-  border-radius: 5px;
-  background-color: whitesmoke;
   cursor: pointer;
 }
 
@@ -77,64 +101,7 @@ div#senator-details {
   margin-left: 0;
 }
 
-#senator-details p,
-#website-link {
-  margin-left: 50px;
-}
-
-#party-select,
-#state,
-#rating {
-  padding: 10px;
-  border: 1px solid #1c4178;
-  border-radius: 5px;
-  background-color: whitesmoke;
-  color: #1c4178;
-}
-
-#senator-details,
-#filtered-senators {
-  list-style: none;
-  text-align: justify;
-  margin-left: 50px;
-  cursor: pointer;
-}
-
-.filter-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  background-color: whitesmoke;
-  border: 1px solid #1c4178;
-  border-radius: 5px;
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
-}
-
-.filter-title {
-  margin-bottom: 15px;
-}
-
-.filter-controls {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  margin: 10px;
-}
-
 footer {
-  background-color: #333;
-  color: whitesmoke;
-  text-align: center;
   padding: 10px 0;
 }
 
@@ -145,20 +112,57 @@ footer small {
 button {
   width: 200px;
   height: 40px;
-  border: 1px solid #1c4178;
-  color: #1c4178;
-  font-size: 19px;
-  letter-spacing: 3px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
-  font-size: small;
+  font-size: 14px;
+  letter-spacing: 2px;
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  /*margin-left: 500px;*/
   margin-top: 50px;
-  padding: 0px;
   overflow: hidden;
-  background-color: whitesmoke;
-  border-radius: 10px;
+}
+
+#senator-details p,
+#website-link {
+  margin-left: 50px;
+}
+
+#party-affiliation-filter,
+#state-filter,
+#rank-filter {
+  padding: 10px;
+}
+
+#senator-details,
+#filtered-senators {
+  list-style: none;
+  text-align: justify;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+.filter-container,
+.filter-controls,
+.filter-group {
+  align-items: center;
+  display: flex;
+}
+
+.filter-container {
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.filter-title {
+  margin-bottom: 15px;
+}
+
+.filter-controls {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  margin: 10px;
 }

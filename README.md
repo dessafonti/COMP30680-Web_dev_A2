@@ -106,7 +106,9 @@ democratsCounterElement.innerHTML = `Democrats: ${partyAffiliationData.Democrat}
 
 ## How To Use
 
+To avail of the filter search of the senators, click on the filter dropdowns as seen under the heading **Senators Information** and click on your desired filter setting. N.B. these filters can be compounded e.g., you can search by party, then further refine your search by selecting specific states et cetera.
+
 To select a senator and display more information about them (as outlined in **Restrictions & Requirements: Requirement 4**), click on any of the senators displayed under the heading **Senators Information**
 For example, if I click on _Patrick Leahy (male), Rank: Senior, State: VT (Democrat)_, the following information will be displayed at the bottom of the page:
 
-![Senator: Further Information On Click](readme_senator_further_info.png)
+![Senator: Further Information On Click](images/readme_senator_further_info.png)

@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       leadershipRolesData.Democrat.forEach((senator) => {
         democratsLeadersElement.insertAdjacentHTML(
           "beforeend",
-          `<li>${senator.leadershipStatus} ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
+          `<li>${senator.leadershipStatus}: ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
         );
       });
 
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       leadershipRolesData.Republican.forEach((senator) => {
         republicansLeadersElement.insertAdjacentHTML(
           "beforeend",
-          `<li>${senator.leadershipStatus} ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
+          `<li>${senator.leadershipStatus}: ${senator.firstname} ${senator.lastname} (${senator.party})</li>`
         );
       });
 
