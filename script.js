@@ -133,15 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       //Andressa's code starts here(comment to be deleted later):
 
-      // accessing HTML elements
-      const partyFilter = document.getElementById("party-select");
-      const stateFilter = document.getElementById("state");
-      const rankFilter = document.getElementById("rating");
+      //Acquire the DOM elements for filtering and assign each DOM element to a variable
+      const partyFilter = document.getElementById("party-affiliation-filter");
+      const stateFilter = document.getElementById("state-filter");
+      const rankFilter = document.getElementById("rank-filter");
+
       const filteredSenatorsContainer =
         document.getElementById("filtered-senators");
       const senatorDetailsContainer =
         document.getElementById("senator-details");
 
+      //Define function showSenatorDetails and configure it so that upon the webpage loading (when no senator has been selected) the corresponding DOM element is empty
       // function to display detailed information about a selected senator
       function showSenatorDetails(senator) {
         senatorDetailsContainer.innerHTML = "";
@@ -218,6 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//Function that corresponds with back-to-top-btn: On click,
 // code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
 function backToTop() {
   window.scrollTo(0, 0);
