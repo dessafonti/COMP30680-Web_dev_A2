@@ -108,14 +108,13 @@ footer small {
 }
 
 button {
-  width: 200px;
-  height: 40px;
   font-size: 14px;
   letter-spacing: 2px;
   display: block;
   margin: 0 auto;
   margin-top: 50px;
   overflow: hidden;
+  padding: 25px 30px;
 }
 
 button,
