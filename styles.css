@@ -10,6 +10,26 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+header {
+  background-color: var(--primary-colour);
+  text-align: center;
+  padding: 30px;
+}
+
+main {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 70%;
+}
+
+h1 {
+  color: var(--secondary-colour);
+  font-size: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  left: 60px;
+}
+
 h1,
 h2,
 h3,
@@ -18,51 +38,42 @@ footer {
   font-weight: bold;
 }
 
-h1,
-footer {
-  color: var(--secondary-colour);
-  background-color: var(--primary-colour);
-}
-
-h2 {
-  color: var(--primary-colour);
-  font-size: 24px;
-  width: 80%;
-  margin: 0 auto;
-}
-
-h3 {
-  color: var(--primary-colour);
-  font-size: 24px;
-} /*need this one to set the title inline*/
-
 h2,
+h3,
 button,
+footer,
 #party-affiliation-filter,
 #state-filter,
 #rank-filter,
 .filter-container {
-  background-color: var(--secondary-colour);
-  border: 1px solid var(--primary-colour);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-main {
-  padding: 20px;
-  margin: 20px auto;
-}
-
-header {
   background-color: var(--primary-colour);
-  text-align: center;
+  color: var(--secondary-colour);
+}
+
+h2 {
+  margin: 0 auto;
   padding: 30px;
 }
 
-h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-  margin-left: 115px;
+h2,
+h3 {
+  font-size: 24px;
+}
+
+h2,
+li,
+button,
+.affiliations-box,
+.leadership-box,
+.filter-container,
+#party-affiliation-filter,
+#state-filter,
+#rank-filter,
+#filtered-senators,
+#senator-details {
+  border: 1px solid var(--primary-colour);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 img {
@@ -72,25 +83,16 @@ img {
   top: -15px;
 }
 
-h2 {
-  margin-bottom: 15px;
-  padding: 20px;
-}
-
-ul {
+ul,
+li {
   list-style: none;
 }
 
 li {
   margin-top: 25px;
   margin-bottom: 10px;
-  margin-left: 50px;
   text-align: center;
-  border: 1px solid var(--primary-colour);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
-} /* a lot of changes here*/
+}
 
 label {
   margin-right: 10px;
@@ -106,15 +108,13 @@ footer small {
 }
 
 button {
-  width: 200px;
-  height: 40px;
   font-size: 14px;
-  color: var(--primary-colour);
   letter-spacing: 2px;
   display: block;
   margin: 0 auto;
   margin-top: 50px;
   overflow: hidden;
+  padding: 20px 25px;
 }
 
 button,
@@ -123,8 +123,29 @@ select,
   cursor: pointer;
 }
 
-#website-link {
-  margin-left: 50px;
+#senator-details h2 {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.filter-group label {
+  color: var(--secondary-colour);
+}
+
+.affiliations-box ul {
+  position: relative;
+  left: -18px;
+}
+
+.affiliations-box,
+.leadership-box,
+#filtered-senators,
+#senator-details,
+#party-affiliation-filter,
+#state-filter,
+#rank-filter {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
 }
 
 #party-affiliation-filter,
@@ -133,52 +154,58 @@ select,
   padding: 10px;
 }
 
-.affiliations_box {
-  border: 1px solid var(--primary-colour);
-  background-color: var(--secondary-colour);
-  border-radius: 5px;
+.affiliations-box {
   padding: 20px;
-  width: 30%;
-  margin: 0 auto 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: var(--primary-colour);
-  list-style: none; /*a lot of changes here */
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 #party-affiliations-democrats,
 #party-affiliations-republicans,
 #party-affiliations-independents {
-  margin-left: 90px;
+  text-align: center;
 }
 
-.leadership_box,
+.leadership-box,
 #filtered-senators,
 #senator-details {
-  list-style: none;
   text-align: justify;
-  border: 1px solid var(--primary-colour);
-  background-color: var(--secondary-colour);
-  border-radius: 5px;
   padding: 20px;
-  width: 70%;
-  margin: 25px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: var(--primary-colour);
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
   transition: transform 0.3s;
-} /*changes here*/
+}
 
-#filtered-senators li {
-  margin-left: 100px;
+.leadership-box li,
+#filtered-senators li,
+#senator-details li {
+  background-color: #fff;
   width: 80%;
-} /*changes here*/
+  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.leadership-box li {
+  position: relative;
+  left: -18px;
+}
 
 #filtered-senators li:hover {
   transform: scale(1.1);
-} /*changes here*/
+}
 
 #senator-details {
-  width: 50%;
   text-align: center;
+}
+
+#senator-details li {
+  text-align: center;
+  position: relative;
+  left: -18px;
 }
 
 .filter-container,
@@ -193,12 +220,7 @@ select,
   margin-bottom: 10px;
   padding: 10px;
   flex-direction: column;
-  width: 80%;
   margin: 0 auto;
-}
-
-.filter-title {
-  margin-bottom: 15px;
 }
 
 .filter-controls {
@@ -207,5 +229,5 @@ select,
 }
 
 .filter-group {
-  margin: 10px;
+  margin: 20px;
 }
