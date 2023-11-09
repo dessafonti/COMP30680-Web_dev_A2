@@ -4,17 +4,22 @@
 
 This project comprises a **webpage that provides information on members of the US Senate**. This data pertaining to the US Senate and its constituents was retrieved from (www.govtrack.us/); please note that this data is not dynamically updated and thus might not accurately represent the current state of the US Senate.
 
-As this project was created for an assigment, there were several restrictions and requirements that the project had to accomodate.
+## Table of Contents
+
+- Restrictions & Requirements
+- Key Features
+- How to Use
 
 ## Restrictions & Requirements
 
+As this project was created for an assigment, there were several restrictions and requirements that the project had to accomodate.
 The project had to be coded such that:
 
 - The project was composed entirely of **HTML5, CSS3 & Vanilla JavaScript (ES6)**, no other languages were permitted
 - The use of frameworks, incl. JavaScript frameworks e.g., JQuery, were not permitted
 - The webpage consisted of a single index file named **senators.html**
 
-Upon loading and fully rendering, the webpage had to do and display the following:
+Upon loading and fully rendering, the webpage had to do the following:
 
 - **Requirement 1**
   - Display the total number of senators in each party affiliation
@@ -53,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 ```
 
-This renders the most important component of the project, _"the use of JavaScript to read, manipulate and present data"_ feasible.
+This makes it possible to accomplish the most crucial aspect of the project:"utilising JavaScript to read, manipulate, and present data."
 
 ---
 
@@ -90,7 +95,7 @@ senators.forEach((senator) => {
 
 ### Rendering of JSON Data in senators.html: No Hardcoding of Data (Cont.)
 
-The information that was processed by the forEach() method, once stored appropriately, is used to populate empty HTML elements contained within senators.html by targeting the DOM elements.
+The information processed by the forEach() method, once stored appropriately, is used to populate empty HTML elements contained within senators.html.
 
 ```JavaScript
 const democratsCounterElement = document.getElementById(
@@ -102,13 +107,48 @@ democratsCounterElement.innerHTML = `Democrats: ${partyAffiliationData.Democrat}
 
 ---
 
-### Filtering the Data
+### Filtering of Data According to User Preferences
+
+There are 3 different filtering options:
+
+- Select Party
+- Select State
+- Select Rank
+
+All three of these filters have event listeners which activate filtering functions upon changes to setting. These filters can be compounded i.e., applied simultaneously to further refine the data displayed.
+
+```javascript
+function filterSenators() {
+        const selectedParty = partyFilter.value;
+        const selectedState = stateFilter.value;
+        const selectedRank = rankFilter.value;
+
+        filteredSenatorsContainer.innerHTML = "";
+        senatorDetailsContainer.innerHTML = "";
+
+        const filteredList = senators.filter((senator) => {
+          return (
+            (selectedParty === "show-all" || senator.party === selectedParty) &&
+            (selectedState === "show-all" || senator.state === selectedState) &&
+            (selectedRank === "show-all" ||
+              senator.senator_rank_label === selectedRank)
+          );
+        });
+```
+
+---
 
 ## How To Use
 
-To avail of the filter search of the senators, click on the filter dropdowns as seen under the heading **Senators Information** and click on your desired filter setting. N.B. these filters can be compounded e.g., you can search by party, then further refine your search by selecting specific states et cetera.
+To filter the senators data, click on the filter dropdowns as seen under the heading **Senators Information** and click on your desired filter setting. N.B. these filters can be compounded e.g., you can search by party, then further refine your search by selecting specific states et cetera.
 
-To select a senator and display more information about them (as outlined in **Restrictions & Requirements: Requirement 4**), click on any of the senators displayed under the heading **Senators Information**
-For example, if I click on _Patrick Leahy (male), Rank: Senior, State: VT (Democrat)_, the following information will be displayed at the bottom of the page:
+![Senator: Further Information On Click](images/readme-img-1.png)
 
-![Senator: Further Information On Click](images/readme_senator_further_info.png)
+To select a senator and display more information about them (as outlined in **Restrictions & Requirements: Requirement 4**), click on any of the senators displayed under the heading **Senators Information**.
+For example, if I click on _Patrick Leahy (male), Rank: Senior, State: VT (Democrat)_:
+
+![Senator: Further Information On Click](images/readme-img-3.png)
+
+...The following information will be displayed at the bottom of the page:
+
+![Senator: Further Information On Click](images/readme-img-2.png)
