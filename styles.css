@@ -133,6 +133,11 @@ select,
   color: var(--secondary-colour);
 }
 
+.affiliations-box ul {
+  position: relative;
+  left: -18px;
+}
+
 .affiliations-box,
 .leadership-box,
 #filtered-senators,
