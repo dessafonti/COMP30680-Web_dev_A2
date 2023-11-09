@@ -1,13 +1,15 @@
-//Function that corresponds with back-to-top-btn: On click, scroll back to top of webpage
-// code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+//Define function backToTop
+//Function that corresponds with button .back-to-top-btn: On click, scroll back to top of webpage
+//Title: "Back to Top Button with HTML, CSS and JavaScript", Author: Coding Journey, Date: 13 Jan 2019, Code Version: 5.0, 3.0, ES6, Availability: https://www.youtube.com/watch?v=gphMli74Chk&t=699s
+//Title: "Element: scrollTo() method", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
 function backToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
-//Function that corresponds with senator selection: On click, scroll back to bottom of webpage
-// code resouce: "Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]" in https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+//Define function scrollToBottom
+//Function that corresponds with senator selection: On click, scroll to bottom of webpage
+//Title:"Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]", Author:  HowToCodeSchool, Date: 2 Jul 2022, Code Version: 5.0, 3.0, ES6, Availability: https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
+//Title: "Element: scrollTo() method", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
 function scrollToBottom() {
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -15,6 +17,8 @@ function scrollToBottom() {
   });
 }
 
+//Use Fetch API to read JSON file
+//Title: "Read JSON File into HTML with JavaScript Fetch API", Author: ByteGrad, Date: 13 Jul 2022, Code Version: ES6, Availability: https://youtu.be/Oage6H4GX2o?si=7kFETDdxkr2Tbhmm
 document.addEventListener("DOMContentLoaded", () => {
   fetch("./senators.json")
     .then((response) => response.json())
@@ -43,7 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         Independent: [],
       };
 
-      //Use the forEach() iterative method to loop through senators.json and process the data, appending the above objects when appropriate
+      //Use the forEach() iterative method to loop through senators and process the data, appending the above objects when appropriate
+      //Title: "Array.prototype.forEach()", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
       senators.forEach((senator) => {
         const firstname = senator.person.firstname;
         const lastname = senator.person.lastname;
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const leadershipStatus = senator.leadership_title;
 
         //Define objects "senatorData", "senatorLeadershipData" with appropriate properties & set their properties with the corresponding variables above
+        //Title: "Creating an Object in Javascript", Author: Daragh Ó Tuama (Code Institute), Date: N/A, Code Version: ES6, Availability: https://codeinstitute.net/ie/blog/creating-an-object-in-javascript/
         let senatorData = new Object();
         senatorData.firstname = firstname;
         senatorData.lastname = lastname;
@@ -75,13 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
         senatorLeadershipData.party = party;
 
         //Use if conditional statement to assess the party affiliation of senator data point and increment the corresponding property in partyAffiliationData accordingly
+        //Title: "Increment (++)", Author: Mozilla, Date: N/A, Code Version: ES6, Availability: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment
+        //Title: "Object.prototype.hasOwnProperty()", Author: Mozilla, Date: N/A, Code Version: ES6, Availability: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty
         if (partyAffiliationData.hasOwnProperty(party)) {
           partyAffiliationData[party]++;
         }
 
         //Use if conditional statement to assess if leadershipStatus is false or true (if true, control flow allows for creation of the string "senatorLeadershipData" with the respective informartion)
         if (leadershipStatus) {
-          //const senatorLeadershipData = `${leadershipStatus}: ${senatorData.firstname} ${senatorData.lastname} (${senatorData.party})`;
           leadershipRolesData[party].push(senatorLeadershipData);
         }
 
@@ -119,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       independentsCounterElement.innerHTML = `Independents: ${partyAffiliationData.Independent}`;
 
       //Update the innerHTML of senators.html with the senators leadership info from leadershipRolesData
+      //Title: "Read JSON File into HTML with JavaScript Fetch API", Author: ByteGrad, Date: 13 Jul 2022, Code Version: ES6, Availability: https://youtu.be/Oage6H4GX2o?si=7kFETDdxkr2Tbhmm
       leadershipRolesData.Democrat.forEach((senator) => {
         democratsLeadersElement.insertAdjacentHTML(
           "beforeend",
@@ -141,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
       republicansLeadersElement.appendChild(document.createElement("br"));
 
       //Update the innerHTML of senators.html with the senators leadership info from leadershipRolesData
+      //Title: "Read JSON File into HTML with JavaScript Fetch API", Author: ByteGrad, Date: 13 Jul 2022, Code Version: ES6, Availability: https://youtu.be/Oage6H4GX2o?si=7kFETDdxkr2Tbhmm
       leadershipRolesData.Independent.forEach((senator) => {
         independentsLeadersElement.insertAdjacentHTML(
           "beforeend",
@@ -182,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </ul>
         `;
 
+        //Interpolate websiteLink pertaining to the selected senator in to senators.html
         senatorDetailsContainer.appendChild(websiteLink);
         scrollToBottom();
       }
@@ -192,12 +202,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedState = stateFilter.value;
         const selectedRank = rankFilter.value;
 
+        //Initialise (or re-initialse) filteredSenatorsContainer and senatoeDetailsContainer to an empty element
         // cleaning the filtered senators and details containers
         filteredSenatorsContainer.innerHTML = "";
         senatorDetailsContainer.innerHTML = "";
 
-        // creating a filtered list based on party, state, and rank
-        // code reference: "filter Array Method | JavaScript Tutorial" in https://www.youtube.com/watch?v=mJGv12UHqXc
+        //Define list "filteredList" with appropriate properties: party, state, and rank
+        //Title: "filter Array Method | JavaScript Tutorial", Author: Florin Pop, Date: 3 Apr 2020, Code Version: ES6, Availability: https://www.youtube.com/watch?v=mJGv12UHqXc
         const filteredList = senators.filter((senator) => {
           return (
             (selectedParty === "show-all" || senator.party === selectedParty) &&
@@ -207,40 +218,27 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
-        // displaying the filtered list
+        //Use the forEach() iterative method to loop through senators and process the data, rendering filteredList
+        //Title: "Array.prototype.forEach()", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
         filteredList.forEach((senator) => {
           const senatorInfo = `${senator.person.firstname} ${senator.person.lastname} (${senator.person.gender}), Rank: ${senator.senator_rank_label}, State: ${senator.state} (${senator.party})`;
           const senatorElement = document.createElement("li");
           senatorElement.textContent = senatorInfo;
           filteredSenatorsContainer.appendChild(senatorElement);
 
-          // adding a click event to each senator list item to display their details
+          //Add "click" event listener to each senator li element to render their details in senatorDetailsContainer
           senatorElement.addEventListener("click", () => {
             showSenatorDetails(senator);
           });
         });
       }
 
-      // setting the initial filtered list to show all senators as default
+      //Configure filterSenators so that upon the webpage loading the default is show all senators
       filterSenators();
 
-      // setting event listeners for the filters to change the list accordingly to the user options
+      //Add "change" event listener to each filter dropdown to render the list according to selected filter options
       partyFilter.addEventListener("change", filterSenators);
       stateFilter.addEventListener("change", filterSenators);
       rankFilter.addEventListener("change", filterSenators);
     });
 });
-
-//Function that corresponds with back-to-top-btn: On click, scroll back to top of webpage
-// code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
-function backToTop() {
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-}
-
-//Function that corresponds with senator selection: On click, scroll back to bottom of webpage
-// code resouce: "Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]" in https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
-function scrollToBottom() {
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-}
