@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const websiteLink = document.createElement("a");
         websiteLink.href = senator.website;
         websiteLink.target = "_blank";
-        websiteLink.textContent = "Visit Website";
+        websiteLink.textContent = senator.website;
         websiteLink.id = "website-link";
 
         //Interpolate HTML containing information pertaining to the selected senator in to senators.html
@@ -188,11 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <li>Start Date: ${senator.startdate}</li>
         <li>YouTube: ${senator.person.youtubeid || "N/A"}</li>
         <li>Twitter: ${senator.person.twitterid || "N/A"}</li>
+        <li>Website: ${websiteLink.outerHTML}</>
         </ul>
         `;
 
         //Interpolate websiteLink pertaining to the selected senator in to senators.html
-        senatorDetailsContainer.appendChild(websiteLink);
         scrollToBottom();
       }
 

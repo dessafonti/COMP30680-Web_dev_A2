@@ -145,10 +145,6 @@ select,
   color: var(--primary-colour);
 }
 
-#website-link {
-  margin-left: 50px;
-}
-
 #party-affiliation-filter,
 #state-filter,
 #rank-filter {
