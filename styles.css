@@ -19,6 +19,7 @@ header {
 main {
   padding: 20px;
   margin: 20px auto;
+  max-width: 70%;
 }
 
 h1 {
@@ -49,14 +50,6 @@ footer,
   color: var(--secondary-colour);
 }
 
-h2,
-.leadership-box,
-#filtered-senators,
-#senator-details,
-.filter-container {
-  width: 70%;
-}
-
 h2 {
   margin: 0 auto;
   padding: 30px;
@@ -68,11 +61,16 @@ h3 {
 }
 
 h2,
+li,
 button,
+.affiliations-box,
+.leadership-box,
+.filter-container,
 #party-affiliation-filter,
 #state-filter,
 #rank-filter,
-.filter-container {
+#filtered-senators,
+#senator-details {
   border: 1px solid var(--primary-colour);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -85,18 +83,15 @@ img {
   top: -15px;
 }
 
-ul {
+ul,
+li {
   list-style: none;
 }
 
 li {
   margin-top: 25px;
   margin-bottom: 10px;
-  margin-left: 50px;
   text-align: center;
-  border: 1px solid var(--primary-colour);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 label {
@@ -138,6 +133,10 @@ select,
   color: var(--secondary-colour);
 }
 
+.affiliations-box,
+.leadership-box,
+#filtered-senators,
+#senator-details,
 #party-affiliation-filter,
 #state-filter,
 #rank-filter {
@@ -152,40 +151,27 @@ select,
 }
 
 .affiliations-box {
-  border: 1px solid var(--primary-colour);
-  background-color: var(--secondary-colour);
-  border-radius: 5px;
   padding: 20px;
-  width: 30%;
   display: block;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: var(--primary-colour);
-  list-style: none; /*a lot of changes here */
 }
 
 #party-affiliations-democrats,
 #party-affiliations-republicans,
 #party-affiliations-independents {
-  margin-left: 90px;
+  text-align: center;
 }
 
 .leadership-box,
 #filtered-senators,
 #senator-details {
-  list-style: none;
   text-align: justify;
-  border: 1px solid var(--primary-colour);
-  background-color: var(--secondary-colour);
-  border-radius: 5px;
   padding: 20px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  color: var(--primary-colour);
   transition: transform 0.3s;
 }
 
@@ -194,7 +180,7 @@ select,
 #senator-details li {
   background-color: #fff;
   width: 80%;
-  padding: 20px 0px;
+  padding: 20px;
   margin: 0 auto;
   margin-bottom: 25px;
 }

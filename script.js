@@ -6,15 +6,12 @@ function backToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
-//Define function scrollToBottom
-//Function that corresponds with senator selection: On click, scroll to bottom of webpage
-//Title:"Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]", Author:  HowToCodeSchool, Date: 2 Jul 2022, Code Version: 5.0, 3.0, ES6, Availability: https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
-//Title: "Element: scrollTo() method", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
-function scrollToBottom() {
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: "smooth",
-  });
+//Define function scrollToSenatorDetails
+//Function that corresponds with senator selection: On click, scroll to senatorDetails Element
+//Title: "Element: scrollIntoView() method", Author: Mozilla, Date: N/A, Code Version: ES6, Availability:  https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+function scrollToSenatorDetails() {
+  const senatorDetailsElement = document.getElementById("senator-details");
+  senatorDetailsElement.scrollIntoView({ behavior: "smooth" });
 }
 
 //Use Fetch API to read JSON file
@@ -193,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         //Interpolate websiteLink pertaining to the selected senator in to senators.html
-        scrollToBottom();
+        scrollToSenatorDetails();
       }
 
       //Define function filterSenators to filter and display senators based on party, state, and rank
