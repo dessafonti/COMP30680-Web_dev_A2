@@ -34,7 +34,7 @@ h2 {
 h3 {
   color: var(--primary-colour);
   font-size: 24px;
-} /*need this one to set the title online*/
+} /*need this one to set the title inline*/
 
 h2,
 button,
@@ -90,7 +90,7 @@ li {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 90%;
-} /* a lot of changes*/
+} /* a lot of changes here*/
 
 label {
   margin-right: 10px;
@@ -142,7 +142,7 @@ select,
   margin: 0 auto 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: var(--primary-colour);
-  list-style: none; /*changes here */
+  list-style: none; /*a lot of changes here */
 }
 
 #party-affiliations-democrats,
@@ -159,7 +159,7 @@ select,
   border: 1px solid var(--primary-colour);
   background-color: var(--secondary-colour);
   border-radius: 5px;
-  padding: 20px; /* Adjust the padding here */
+  padding: 20px;
   width: 70%;
   margin: 25px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
