@@ -37,15 +37,28 @@ h3 {
 } /*need this one to set the title inline*/
 
 h2,
+h3,
 button,
 #party-affiliation-filter,
 #state-filter,
 #rank-filter,
 .filter-container {
-  background-color: var(--secondary-colour);
+  background-color: var(--primary-colour);
   border: 1px solid var(--primary-colour);
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: var(--secondary-colour);
+}
+
+.filter-group label {
+  color: var(--secondary-colour);
+}
+
+#party-affiliation-filter,
+#state-filter,
+#rank-filter {
+  background-color: var(--secondary-colour);
+  color: var(--primary-colour);
 }
 
 main {
@@ -89,7 +102,6 @@ li {
   border: 1px solid var(--primary-colour);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 90%;
 } /* a lot of changes here*/
 
 label {
@@ -109,7 +121,6 @@ button {
   width: 200px;
   height: 40px;
   font-size: 14px;
-  color: var(--primary-colour);
   letter-spacing: 2px;
   display: block;
   margin: 0 auto;
@@ -133,13 +144,16 @@ select,
   padding: 10px;
 }
 
-.affiliations_box {
+.affiliations-box {
   border: 1px solid var(--primary-colour);
   background-color: var(--secondary-colour);
   border-radius: 5px;
   padding: 20px;
   width: 30%;
-  margin: 0 auto 25px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: var(--primary-colour);
   list-style: none; /*a lot of changes here */
@@ -151,7 +165,7 @@ select,
   margin-left: 90px;
 }
 
-.leadership_box,
+.leadership-box,
 #filtered-senators,
 #senator-details {
   list-style: none;
@@ -161,16 +175,27 @@ select,
   border-radius: 5px;
   padding: 20px;
   width: 70%;
-  margin: 25px auto;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: var(--primary-colour);
   transition: transform 0.3s;
-} /*changes here*/
+}
 
+.leadership-box li,
 #filtered-senators li {
-  margin-left: 100px;
+  background-color: #fff;
   width: 80%;
-} /*changes here*/
+  padding: 20px 0px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.leadership-box li {
+  position: relative;
+  left: -18px;
+}
 
 #filtered-senators li:hover {
   transform: scale(1.1);
@@ -179,6 +204,17 @@ select,
 #senator-details {
   width: 50%;
   text-align: center;
+}
+
+#senator-details li {
+  width: 50%;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px 0px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  position: relative;
+  left: -18px;
 }
 
 .filter-container,

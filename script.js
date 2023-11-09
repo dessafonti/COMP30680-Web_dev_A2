@@ -1,3 +1,20 @@
+//Function that corresponds with back-to-top-btn: On click, scroll back to top of webpage
+// code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+function backToTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}
+
+//Function that corresponds with senator selection: On click, scroll back to bottom of webpage
+// code resouce: "Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]" in https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth",
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("./senators.json")
     .then((response) => response.json())
@@ -221,6 +238,7 @@ function backToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
+//Function that corresponds with senator selection: On click, scroll back to bottom of webpage
 // code resouce: "Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]" in https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
 function scrollToBottom() {
