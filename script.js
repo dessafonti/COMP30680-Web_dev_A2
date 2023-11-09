@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         senatorDetailsContainer.appendChild(websiteLink);
+        scrollToBottom();
       }
 
       //Define function filterSenators to filter and display senators based on party, state, and rank
@@ -215,6 +216,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Function that corresponds with back-to-top-btn: On click, scroll back to top of webpage
 // code resouce: "Back to Top Button with HTML, CSS and JavaScript" in https://www.youtube.com/watch?v=gphMli74Chk&t=699s
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
 function backToTop() {
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+}
+
+// code resouce: "Scroll Page to Bottom with JavaScript [HowToCodeSchool.com]" in https://youtu.be/Vh2g1Ug8_Hs?si=407inzGldkfPWeYt
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 }
